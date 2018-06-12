@@ -28,15 +28,15 @@ ENV TZ Europe/Copenhagen
 # Install maven
 #################################################################
 
-ARG MAVEN_VERSION=3.5.2
+ARG MAVEN_VERSION=3.5.3
 ARG USER_HOME_DIR="/root"
-ARG SHA=707b1f6e390a65bde4af4cdaf2a24d45fc19a6ded00fff02e91626e3e42ceaff
-ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
+ARG BASE_URL=https://www-eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/
+ARG SHA=bbfa43a4ce4ef96732b896d057f8a613aa229801
 
-RUN mkdir -p /usr/share/maven /usr/share/maven/ref 
 RUN curl -fsSL -o /tmp/apache-maven.tar.gz ${BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz 
-RUN echo "${SHA}  /tmp/apache-maven.tar.gz" | sha256sum -c - 
+RUN echo "${SHA}  /tmp/apache-maven.tar.gz" | sha1sum -c - 
+## Verified, let's install 
+RUN mkdir -p /usr/share/maven /usr/share/maven/ref 
 RUN tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1 
 RUN rm -f /tmp/apache-maven.tar.gz 
-RUN ln -s /usr/share/maven/bin/mvn /usr/bin/mvn 
-
+RUN ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
