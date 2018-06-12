@@ -3,4 +3,3 @@
 Env containing 
 - jdk8
 - maven
-- mongo
