@@ -9,6 +9,7 @@ ENV DEBCONF_NONINTERACTIVE_SEEN true
 RUN apt-get update && \
     apt-get install -y software-properties-common  \
     git \
+    iputils-ping \
     tzdata \
     curl && \
     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
