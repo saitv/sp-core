@@ -9,6 +9,7 @@ ENV DEBCONF_NONINTERACTIVE_SEEN true
 RUN apt-get update && \
     apt-get install -y software-properties-common  \
     git \
+    iputils-ping \
     tzdata \
     curl && \
     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
@@ -30,10 +31,10 @@ ENV TZ Europe/Copenhagen
 # Install maven
 #################################################################
 
-ARG MAVEN_VERSION=3.5.3
+ARG MAVEN_VERSION=3.5.4
 ARG USER_HOME_DIR="/root"
 ARG BASE_URL=https://www-eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/
-ARG SHA=bbfa43a4ce4ef96732b896d057f8a613aa229801
+ARG SHA=22cac91b3557586bb1eba326f2f7727543ff15e3
 
 RUN curl -fsSL -o /tmp/apache-maven.tar.gz ${BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz 
 RUN echo "${SHA}  /tmp/apache-maven.tar.gz" | sha1sum -c - 
