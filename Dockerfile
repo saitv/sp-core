@@ -15,7 +15,7 @@ RUN apt-get update && \
     curl
 
 # Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/open-jdk
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 RUN  cp /usr/share/zoneinfo/Europe/Copenhagen /etc/localtime \
     && echo "Europe/Copenhagen" > /etc/timezone
